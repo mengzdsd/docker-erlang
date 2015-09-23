@@ -16,9 +16,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends bu
 # Add erlang source codes
 ADD $ERLANG_SRC_URL /
 
-RUN tar -C /usr/src -xzf erlang.tar.gz \
+RUN tar -C /usr/src -xzf "$ERLANG_SRC_FILE" \
   && cd "/usr/src/$ERLANG_SRC_DIR" \
   && ./configure --enable-smp-support --enable-kernel-poll --enable-sctp --enable-native-libs --enable-vm-probes --enable-shared-zlib --enable-m64-build --with-dynamic-trace=dtrace \
   && make \
   && make install \
-  && cd / && rm -rf /erlang.tar.gz "/usr/src/$ERLANG_SRC_DIR"
+  && cd / && rm -rf "/$ERLANG_SRC_FILE" "/usr/src/$ERLANG_SRC_DIR"
