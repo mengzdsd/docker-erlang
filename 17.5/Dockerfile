@@ -9,7 +9,8 @@ ENV ERLANG_SRC_FILE otp_src_17.5.tar.gz
 ENV ERLANG_SRC_DIR otp_src_17.5/
 
 # Update and install build tool packages
-RUN apt-get install -y --no-install-recommends libncurses5-dev openssl libssl-dev fop xsltproc unixodbc-dev systemtap-sdt-dev \
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends libncurses5-dev openssl libssl-dev fop xsltproc unixodbc-dev systemtap-sdt-dev \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
